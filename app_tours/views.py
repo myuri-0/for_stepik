@@ -15,7 +15,6 @@ class MainView(View):
 class DepartureView(View):
 
     def get(self, request, departure):
-
         if departure not in data.departures.keys():
             raise Http404
         return render(request, 'departure.html')
@@ -24,7 +23,6 @@ class DepartureView(View):
 class TourView(View):
 
     def get(self, request, id):
-
         if id not in data.tours.keys():
             raise Http404
         context = data.tours[id]
@@ -33,3 +31,7 @@ class TourView(View):
 
 def custom_handler404(request, exception):
     return HttpResponseNotFound('Page not found 404! Такой страницы не существует!')
+
+
+def custom_handler500(request):
+    return HttpResponseNotFound('Internal Server Error 500! Внутренняя ошибка сервера!')
