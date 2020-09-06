@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block container %}
 
-{% for id, tour in tours.items %} {% if id|slugify in request.path %}
+{% for id, tour in tours.items %} {% if id|slugify == request.path|cut:'/tour/'|cut:'/' %}
     <h1 class="display-3 mt-4" data-test="title">{{ tour.title }} {{ tour.stars }}★</h1>
 
     <!-- HERO -->
