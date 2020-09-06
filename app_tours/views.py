@@ -24,10 +24,20 @@ class DepartureView(View):
     def get(self, request, departure):
         if departure not in data.departures.keys():
             raise Http404
-        
+        available_departure = {
+            id_tour: value for id_tour, value in data.tours.items() if value['departure'] == departure}
+        min_price = min(available_departure.values(), key=lambda x: x['price'])['price']
+        max_price = max(available_departure.values(), key=lambda x: x['price'])['price']
+        max_nights = max(available_departure.values(), key=lambda x: x['nights'])['nights']
+        min_nights = min(available_departure.values(), key=lambda x: x['nights'])['nights']
         context = {
             "departures": data.departures,
             "tours": data.tours,
+            "amount": len(available_departure),
+            'min_price': min_price,
+            'max_price': max_price,
+            'max_nights': max_nights,
+            'min_nights': min_nights,
         }
         return render(request, 'departure.html', context=context)
 

@@ -3,7 +3,7 @@
 
 {% for departure, city in departures.items %} {% if departure in request.path %}
     <h1 class="display-5 mt-4">Летим <span data-test="from"> {{ city }}</span></h1> {% endif %} {% endfor %}
-    <p class="mb-4" >Найдено <span data-test="tourcount">3</span> тура, от <span data-test="pricemin">26000</span> до <span data-test="pricemax">84600</span> и от <span data-test="nightsmax">4</span> ночей до <span data-test="nightsmax">15</span> ночей</p>
+    <p class="mb-4" >Найдено <span data-test="tourcount">{{ amount }}</span> тура, от <span data-test="pricemin">{{ min_price }}</span> до <span data-test="pricemax">{{ max_price }}</span> и от <span data-test="nightsmax">{{ min_nights }}</span> ночей до <span data-test="nightsmax">{{ max_nights }}</span> ночей</p>
 
     <!-- CARDS -->
 
