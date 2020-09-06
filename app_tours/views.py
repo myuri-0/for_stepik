@@ -24,6 +24,7 @@ class DepartureView(View):
     def get(self, request, departure):
         if departure not in data.departures.keys():
             raise Http404
+        
         context = {
             "departures": data.departures,
             "tours": data.tours,
