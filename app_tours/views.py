@@ -14,7 +14,7 @@ class MainView(View):
         context = {
             "departures": data.departures,
             "tours": data.tours,
-            "random": rand_tour
+            "random_tour": rand_tour
         }
         return render(request, 'index.html', context=context)
 

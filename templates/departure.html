@@ -1,21 +1,21 @@
 {% extends 'base.html' %}
 {% block container %}
 
-{% for d, city in departures.items %} {% if d in request.path %}
+{% for departure, city in departures.items %} {% if departure in request.path %}
     <h1 class="display-5 mt-4">Летим <span data-test="from"> {{ city }}</span></h1> {% endif %} {% endfor %}
     <p class="mb-4" >Найдено <span data-test="tourcount">3</span> тура, от <span data-test="pricemin">26000</span> до <span data-test="pricemax">84600</span> и от <span data-test="nightsmax">4</span> ночей до <span data-test="nightsmax">15</span> ночей</p>
 
     <!-- CARDS -->
 
       <div class="row mt-5" data-test="cards">
-{% for key, value in tours.items %} {% if value.departure in request.path %}
+{% for id, tour in tours.items %} {% if tour.departure in request.path %}
         <div class="col-4" data-test="card">
             <div class="card mb-3" >
-            <img src="{{ value.picture }}" class="card-img-top img-fluid" data-test="picture">
+            <img src="{{ tour.picture }}" class="card-img-top img-fluid" data-test="picture">
             <div class="card-body">
-              <h5 class="card-title">{{ value.title }}</h5>
-             <p class="card-text">{{ value.description }}</p>
-                <a href="/tour/{{ key }}" class="btn btn-sm btn-primary" data-test="tourlink">Подробнее</a>
+              <h5 class="card-title">{{ tour.title }}</h5>
+             <p class="card-text">{{ tour.description }}</p>
+                <a href="/tour/{{ id }}" class="btn btn-sm btn-primary" data-test="tourlink">Подробнее</a>
             </div>
         </div>
         </div>

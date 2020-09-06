@@ -1,18 +1,18 @@
 {% extends 'base.html' %}
 {% block container %}
 
-{% for key, value in tours.items %} {% if key|slugify in request.path %}
-    <h1 class="display-3 mt-4" data-test="title">{{ value.title }} {{ value.stars }}★</h1>
+{% for id, tour in tours.items %} {% if id|slugify in request.path %}
+    <h1 class="display-3 mt-4" data-test="title">{{ tour.title }} {{ tour.stars }}★</h1>
 
     <!-- HERO -->
 
-    <p class="lead" data-test="lead"><span data-test="country">{{ value.country }}</span> <span data-text="departure"> {% for d, city in departures.items %} {% if d == value.departure %} {{ city }} {% endif %}{% endfor %}</span> <span data-text="nights">{{ value.nights }}</span> ночей</p>
+    <p class="lead" data-test="lead"><span data-test="country">{{ tour.country }}</span> <span data-text="departure"> {% for departure, city in departures.items %} {% if departure == value.departure %} {{ city }} {% endif %}{% endfor %}</span> <span data-text="nights">{{ tour.nights }}</span> ночей</p>
 
-    <img data-test="picture" src="{{ value.picture }}" class="w-75" alt="">
+    <img data-test="picture" src="{{ tour.picture }}" class="w-75" alt="">
 
-    <p class="my-4 w-75" data-test="description">{{ value.description }}</p>
+    <p class="my-4 w-75" data-test="description">{{ tour.description }}</p>
 
-    <a href="" class="btn btn-success btn-lg" data-test="buybutton">Купить тур за <span data-test="price">{{ value.price }}</span></a>
+    <a href="" class="btn btn-success btn-lg" data-test="buybutton">Купить тур за <span data-test="price">{{ tour.price }}</span></a>
 
 {% endif %} {% endfor %}
 {% endblock %}
